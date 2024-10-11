@@ -21,6 +21,7 @@ jobs:
 
   deploy_test:
     name: Deploy Test
+    needs: deploy_dev
     uses: ./.github/workflows/step-deploy.yml
     with:
       env: test
