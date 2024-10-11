@@ -1,4 +1,5 @@
 param location string = 'centralus'
+@allowed(['dev', 'test', 'prod'])
 param environment string
 
 var appName = 'devops-days'
