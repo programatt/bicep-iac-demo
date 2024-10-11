@@ -19,6 +19,16 @@ jobs:
       app_service_name: app-devops-days-dev
     secrets: inherit
 
+  deploy_test:
+    name: Deploy Test
+    needs: deploy_dev
+    uses: ./.github/workflows/step-deploy.yml
+    with:
+      env: test
+      resource_group_name: rg-devops-days-test
+      app_service_name: app-devops-days-test
+    secrets: inherit
+
   deploy_prod:
     name: Deploy Prod
     needs: deploy_dev
