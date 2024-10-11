@@ -29,11 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: devops-days-artifact
-          path: artifacts/
-
       - name: Azure login
         uses: azure/login@v2
         with:
@@ -49,14 +44,3 @@ jobs:
             --parameters infrastructure/environments/${{inputs.env}}.bicepparam \
             --resource-group ${{ inputs.resource_group_name }} \
             --verbose
-
-      - name: "Deploy to Azure App Service"
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ inputs.app_service_name }}
-          slot-name: slot
-          package: artifacts/
-
-      - name: Swap slots
-        run: |
-          az webapp deployment slot swap -g ${{ inputs.resource_group_name }} -n ${{ inputs.app_service_name }} --slot slot --target-slot production --verbose
