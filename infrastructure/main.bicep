@@ -6,7 +6,6 @@ var appNameWithEnvironment = '${appName}-${environment}'
 
 targetScope = 'subscription'
 
-
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: 'rg-${appNameWithEnvironment}'
   location: location
