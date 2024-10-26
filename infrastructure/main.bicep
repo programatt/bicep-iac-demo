@@ -2,7 +2,7 @@ param location string = 'centralus'
 @allowed(['dev', 'test', 'prod'])
 param environment string
 
-var appName = 'devops-days'
+var appName = 'icc'
 var appNameWithEnvironment = '${appName}-${environment}'
 
 targetScope = 'subscription'
@@ -16,7 +16,7 @@ module app './appservice.bicep' = {
   name: 'appservice'
   scope: rg
   params: {
-    appName: 'devopsdays'
+    appName: appnameWithEnvironment
     environment: environment
     location: location
   }
