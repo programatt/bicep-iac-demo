@@ -16,7 +16,7 @@ module app './appservice.bicep' = {
   name: 'appservice'
   scope: rg
   params: {
-    appName: appnameWithEnvironment
+    appName: appNameWithEnvironment
     environment: environment
     location: location
   }
