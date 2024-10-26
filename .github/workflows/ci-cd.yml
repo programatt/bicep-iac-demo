@@ -15,8 +15,8 @@ jobs:
     uses: ./.github/workflows/step-deploy.yml
     with:
       env: dev
-      resource_group_name: rg-devops-days-dev
-      app_service_name: app-devops-days-dev
+      resource_group_name: rg-icc-dev
+      app_service_name: app-icc-dev
     secrets: inherit
 
   deploy_test:
@@ -25,16 +25,16 @@ jobs:
     uses: ./.github/workflows/step-deploy.yml
     with:
       env: test
-      resource_group_name: rg-devops-days-test
-      app_service_name: app-devops-days-test
+      resource_group_name: rg-icc-test
+      app_service_name: app-icc-test
     secrets: inherit
 
   deploy_prod:
     name: Deploy Prod
-    needs: deploy_dev
+    needs: deploy_test
     uses: ./.github/workflows/step-deploy.yml
     with:
       env: prod
-      resource_group_name: rg-devops-days-prod
-      app_service_name: app-devops-days-prod
+      resource_group_name: rg-icc-prod
+      app_service_name: app-icc-prod
     secrets: inherit
